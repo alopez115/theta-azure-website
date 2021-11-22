@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang = "en">
+<!-- Author: Anthony Lopez-->
+<!-- All credit to Professor Pogue & Dr. Klump-->
+</head
+    <meta charset = "UTF=8"> 
+    <title> Matchmaker - Web</title>
+    <link rel = "stylesheet" href = matchmaker-web.css>
+</head>
+
+
+<body>
+    <h1>Welcome to Matchmaker, are we destined to be? lets find out...</h1>
+    <p>You will be presented five questions, select an answer from the drop-down menu
+        for each question, then procede to the next question.</br>
+        Please answer honestly, and think carefully about your answer.
+    </p>
+
+    <label> How do you feel about the Wintertime?</label><br />
+
+    <select ID = "Question 1">
+        <option value = "1"> I love the Wintertime</option>
+        <option value = "2"> I like the Wintertime</option>
+        <option value = "3"> I'm indifferent about Wintertime</option>
+        <option value = "4"> I'm not a big fan of the Wintertime</option>
+        <option value = "5"> I hate the Wintertime</option>
+    </select><br />
+
+    <br />
+
+    <label> How do you feel about drinking coffee?</label><br />
+
+    <select ID = "Question 2">
+        <option value = "5"> I love drinking coffee</option>
+        <option value = "4"> I like drinking coffee</option>
+        <option value = "3"> I'm indifferent about drinking coffee</option>
+        <option value = "2"> I don't like drinking coffee</option>
+        <option value = "1"> I hate drinking coffee</option>
+    </select><br />
+
+    <br />
+
+    <label> How do you feel about traveling?</label><br />
+
+    <select ID = "Question 3">
+        <option value = "5"> I love traveling</option>
+        <option value = "4"> I like traveling</option>
+        <option value = "3"> I'm indifferent about traveling</option>
+        <option value = "2"> I don't like to travel</option>
+        <option value = "1">I hate traveling</option> 
+    </select><br />
+
+    <br />
+
+    <label> Do you enjoy listening to music?</label><br />
+
+    <select ID = "Question 4">
+        <option value = "5"> I love listening to music</option>
+        <option value = "4"> I like listening to music</option>
+        <option value = "3"> I'm indifferent about listneing to music</option>
+        <option value = "2"> I don't like listening to music</option>
+        <option value = "1"> I hate listening to music</option>
+    </select><br />
+
+    <br />
+
+    <label>Do you think games are silly little things?</label><br />
+    
+    <select ID = "Question 5">
+        <option value = "5"> No</option>
+        <option value = "4"> Not really</option>
+        <option value = "3"> I don't know</option>
+        <option value = "2"> Somewhat</option>
+        <option value = "1"> Yes</option> 
+    </select><br /><br />
+    <button onclick="viewResults()">View Results</button>
+    <p id = "compatibility"> </p>
+
+
+
+<script>
+console.log("Beginning Matchmaker...");
+
+function calculateCompatibility() {
+    console.log("calculateCompatibility()");
+
+    const DESIRED_RESPONSE = [
+     5, /* I hate the Wintertime */
+     4, /* I like drinking coffee */
+     3, /* I'm indifferent about traveling */
+     5, /* I love listening to music */
+     5, /* I love listening to music */
+    ]
+
+    const MAX_SCORE = 25;
+
+    let question1Response = document.getElementById("Question 1").selectedOptions[0].value;
+    let question2Response = document.getElementById("Question 2").selectedOptions[0].value;
+    let question3Response = document.getElementById("Question 3").selectedOptions[0].value;
+    let question4Response = document.getElementById("Question 4").selectedOptions[0].value;
+    let question5Response = document.getElementById("Question 5").selectedOptions[0].value;
+
+    console.log ("Question 1 Response:");
+    console.log (document.getElementById ("Question 1").selectedOptions[0].text);
+    console.log (document.getElementById ("Question 1").selectedOptions[0].value);
+    console.log(question1Response);
+
+    console.log ("Question 2 Response:");
+    console.log (document.getElementById ("Question 2").selectedOptions[0].text);
+    console.log (document.getElementById ("Question 2").selectedOptions[0].value);
+    console.log(question2Response);
+
+    console.log ("Question 3 Response:");
+    console.log (document.getElementById ("Question 3").selectedOptions[0].text);
+    console.log (document.getElementById ("Question 3").selectedOptions[0].value);
+    console.log(question3Response);
+
+    console.log ("Question 4 Response:");
+    console.log (document.getElementById ("Question 4").selectedOptions[0].text);
+    console.log (document.getElementById ("Question 4").selectedOptions[0].value);
+    console.log(question4Response);
+    
+    console.log ("Question 5 Response:");
+    console.log (document.getElementById ("Question 5").selectedOptions[0].text);
+    console.log (document.getElementById ("Question 5").selectedOptions[0].value);
+    console.log(question5Response);
+
+    let question1Response = 5 - Math.abs(question1Response - DESIRED_RESPONSE[5]);
+    let question2Response = 5 - Math.abs(question1Response - DESIRED_RESPONSE[4]);
+    let question3Response = 5 - Math.abs(question1Response - DESIRED_RESPONSE[3]);
+    let question4Response = 5 - Math.abs(question1Response - DESIRED_RESPONSE[5]);
+    let question5Response = 5 - Math.abs(question1Response - DESIRED_RESPONSE[5]);
+
+    console.log("c1" + question1Response);
+    console.log("c2" + question2Response);
+    console.log("c3" + question3Response);
+    console.log("c4" + question4Response);
+    console.log("c5" + question5Response);
+
+    let totalRespone = question1Response + question2Response + question3Response +
+    question4Response + question5Response;
+
+    totalRespone *= 100 / MAX_SCORE;
+    totalRespone = Math.round (totalRespone);
+    console.log ("totalCompatibility=" + totalResponse);
+
+
+   
+    document.getElementById("compatibility").innerHTML = "Your results are: " + totalRespone;
+}
+
+
+</script>
+
+
+</body>
+</html>
